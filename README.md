@@ -13,3 +13,4 @@ Utilities, scripts, setup notes, and run artifacts metadata for evaluating vLLM,
 - Target server: `dpu2jinkim`
 - Main plan document: `/Users/bytedance/repo/xPU_drv/md/vllm-lmcache-ugds-feasibility-plan.md`
 - Baseline repos: `LMCache`, `uGDS`, and `vllm` cloned under the same local workspace.
+- Source manifest: `docs/source-manifest.md`
