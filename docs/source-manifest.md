@@ -19,9 +19,9 @@ Checked with `docker manifest inspect`.
 
 | Image | Result | Notes |
 |---|---|---|
-| `vllm/vllm-openai:v0.30.0` | found | manifest list includes `linux/amd64` and `linux/arm64` |
+| `vllm/vllm-openai:v0.30.0` | found | manifest list includes `linux/amd64` and `linux/arm64`; descriptor digests `sha256:4864d46625cbc3307623e29ac742030655e27249feba7b97ec925ce4cc4dfb56`, `sha256:5f5e535216848d0c52159c8c13a0af04be5f6fe1a84e79914300610796f76d40` |
 | `vllm/vllm-openai:latest` | found | manifest list includes `linux/amd64` and `linux/arm64` |
-| `lmcache/vllm-openai:v0.5.5` | found | Docker Hub manifest exists |
+| `lmcache/vllm-openai:v0.5.5` | found | Docker Hub manifest exists; descriptor digest `sha256:59b350753673f7bac0b55c4d6d8325d91bd0d1a47d101579f37d57d66a6a951d` |
 | `lmcache/lmcache:v0.5.5` | not found or private | registry returned denied/unauthorized |
 | `lmcache/lmcache:latest` | not found or private | registry returned denied/unauthorized |
 | `ghcr.io/lmcache/lmcache:v0.5.5` | not found or private | registry returned denied |
