@@ -1,0 +1,11 @@
+FROM vllm-lmcache-ugds:0.30.0-0.5.5-cu129
+
+# The LMCache wheel was installed with --no-deps. The server CLI imports
+# sortedcontainers and treats the package as the lightweight stub without it.
+# Do not upgrade torch.
+RUN printf '%s\n' 'torch==2.13.0+cu129' > /tmp/torch-constraint.txt \
+    && pip install --no-cache-dir -c /tmp/torch-constraint.txt \
+        sortedcontainers aiofile aiofiles redis \
+        'opentelemetry-exporter-prometheus>=0.50b0,<=0.61b0' \
+        cupy-cuda12x \
+    && python3 -c "import torch, sortedcontainers; assert '+cu129' in torch.__version__, torch.__version__"

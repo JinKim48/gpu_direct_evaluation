@@ -1,0 +1,12 @@
+ARG BASE_IMAGE=vllm/vllm-openai@sha256:58fdb6bb123a81aa53f46fa4652ad8cc87e817bd1077c9832c6258ef12c1c688
+FROM ${BASE_IMAGE}
+
+ARG LMCACHE_WHEEL=lmcache-0.5.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+
+COPY ${LMCACHE_WHEEL} /tmp/${LMCACHE_WHEEL}
+
+# Install only the LMCache distribution. Dependency resolution can upgrade the
+# base image's vLLM/torch/CUDA packages, so missing imports are fixed explicitly.
+RUN python3 -m pip install --no-cache-dir --no-deps "/tmp/${LMCACHE_WHEEL}" \
+    && rm -f "/tmp/${LMCACHE_WHEEL}" \
+    && python3 -c "import importlib.metadata as m; print('vllm=' + m.version('vllm')); print('torch=' + m.version('torch')); print('lmcache=' + m.version('lmcache')); import lmcache"
